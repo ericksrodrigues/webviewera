@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>ERA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
+    
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-slider.css" rel="stylesheet">
+
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body style="margin:20px 0px 16px 0px;">
+
+    <!--Content -->
+    <div >
+        <form method="POST" action="#">
+            <h3>Finalidade</h3>
+            <select class="form-control">
+                <option>Seleccionar</option>
+                <option>Comprar</option>
+                <option>Arrendar</option>
+                <option>Trespasse</option>
+            </select>
+            <h3>Tipo de imóvel</h3>
+            <select class="form-control">
+                <option>Seleccionar</option>
+                <option>Apartamentos</option>
+                <option>Armazéns</option>
+                <option>Escritórios</option>
+                <option>Garagens</option>
+                <option>Imóveis com negócio</option>
+                <option>Lojas</option>
+                <option>Moradias</option>
+                <option>Prédios</option>
+                <option>Quarto</option>
+                <option>Quintas e herdades</option>
+                <option>Terrenos</option>
+            </select>
+            <br/>
+            <select class="form-control">
+                <option>Nº de quartos</option>
+                <option>1 Quarto</option>
+                <option>2 Quartos</option>
+                <option>3 Quartos</option>
+                <option>4 Quartos</option>
+                <option>5+ Quartos</option>
+            </select>
+            <br/>
+            <!-- <input id="n_quartos" type="text" style="width: 90%" /> <br/> -->
+            <!--
+            <div class="form-inline">
+             <input type="number" placeholder="ex: 150.000€" class="form-control" /> Até <input type="number" class="form-control" placeholder="ex: 160.000€" /> 
+            </div>-->
+
+
+            <!-- Boostrap-Slider: https://github.com/seiyria/bootstrap-slider -->
+            <h3><div id="v_imovel">Preço do imóvel (<span id="min" >0€</span> : <span id="max">+1.000.000€</span>)</h3>
+            <center>
+                <input style="width:95%; "  id="p_imovel" type="text"/> 
+            </center>
+            <h3>Localização</h3>
+            <select class="form-control">
+                <option>Distrito</option>
+            </select>
+            <br/>
+            <select class="form-control">
+                <option>Concelho</option>
+            </select>
+            <br/>
+            <select class="form-control">
+                <option>Freguesia</option>
+            </select>
+            <br/>
+            <select class="form-control">
+                <option>Zona</option>
+            </select>
+
+            <!-- <input  type="text" class="form-control" id="idmap"/>
+            <div style="width:100%; height:200px" id="map"></div>
+            -->
+        <h3>Referência</h3>
+        <input type="number" class="form-control">
+        <!--
+        <h3>Em Campanha</h3>
+        <table>
+        <tr><td>
+            <label>
+                <input type="checkbox">
+                Leilões Online    
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Até 100% Financiamento   
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Alta Rentabilidade    
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Oportunidades   
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Casa com Garantia    
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Casa Aberta  
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Leilões 100[%] ERA 
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Golden Visa ERA
+            </label>
+        </td></tr>
+        </table>
+        <h3>Outras Características</h3>
+          <table>
+        <tr><td>
+            <label>
+                <input type="checkbox">
+                Estacionamento    
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Jardim  
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Piscina  
+            </label>
+        </td></tr><tr><td>
+            <label>
+                <input type="checkbox">
+                Empreendimentos  
+            </label>
+        </td></tr>
+        </table>
+        <br/>
+        <input type="button" class="btn btn-primary" value="Pesquisar">
+
+    </form>
+        </center>
+        -->
+
+    <!-- End Of Content -->
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script> 
+    <!-- SCRIPT SLIDER:  -->
+    <script type="text/javascript">
+        var iSlider = $("#p_imovel").slider({ 
+            id: "p_imovel", 
+            min: 0, 
+            max: 1000000, 
+            range: true, 
+            value: [0, 1000000], 
+            step: 5000});
+        $("#n_quartos").slider({
+        min: 0,
+        max: 10,
+        value: 0,
+        tooltip_position:'bottom'
+        });
+
+        iSlider.on("slide",function(slideEv){
+            var valorMax = slideEv.value[1];
+            $("#min").text(slideEv.value[0] + "€");
+            if(valorMax == 1000000){
+               $("#max").text("+" + valorMax + "€");
+            }else{
+               $("#max").text(valorMax + "€");
+            }
+        });
+   
+        
+    </script>
+
+    
+
+
+    <!-- SCRIPT GOOGLE MAPS API 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAexw_BNkfc1Ddv33WikUoh82jj2bK8IFY&libraries=places"></script>
+    
+    <script type="text/javascript">
+        function initialize() {
+            console.log("teste");
+          var mapOptions = {
+            center: {lat: -33.8688, lng: 151.2195},
+            zoom: 13,
+            scrollwheel: false
+          };
+          var map = new google.maps.Map(document.getElementById('map'),
+            mapOptions);
+
+          var input = /** @type {HTMLInputElement} */(
+              document.getElementById('idmap'));
+
+          // Create the autocomplete helper, and associate it with
+          // an HTML text input box.
+          var autocomplete = new google.maps.places.Autocomplete(input);
+          autocomplete.bindTo('idmap', map);
+
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+          var infowindow = new google.maps.InfoWindow();
+          var marker = new google.maps.Marker({
+            map: map
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+          });
+
+          // Get the full place details when the user selects a place from the
+          // list of suggestions.
+          google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            infowindow.close();
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+              return;
+            }
+
+            if (place.geometry.viewport) {
+              map.fitBounds(place.geometry.viewport);
+            } else {
+              map.setCenter(place.geometry.location);
+              map.setZoom(17);
+            }
+
+            // Set the position of the marker using the place ID and location.
+            marker.setPlace(/** @type {!google.maps.Place} */ ({
+              placeId: place.place_id,
+              location: place.geometry.location
+            }));
+            marker.setVisible(true);
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+            infowindow.open(map, marker);
+          });
+        }
+
+        // Run the initialize function when the window has finished loading.
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    -->
+  </body>
+</html>
