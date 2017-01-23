@@ -36,7 +36,7 @@
     <div >
         <form method="POST" action="#">
             <h3>Finalidade</h3>
-            <select class="form-control">
+            <select class="form-control" id="finalidade" onchange="optComprarTrespasse();">
                 <option>Seleccionar</option>
                 <option>Comprar</option>
                 <option>Arrendar</option>
@@ -77,7 +77,7 @@
             <!-- Boostrap-Slider: https://github.com/seiyria/bootstrap-slider -->
             <h3><div id="v_imovel">Preço do imóvel (<span id="min" >0€</span> : <span id="max">+1.000.000€</span>)</h3>
             <center>
-                <input style="width:95%; "  id="p_imovel" type="text"/> 
+                <div id="slider_change"><input style='width:95%;'  id='p_imovel' type='text'/></div>
             </center>
             <h3>Localização</h3>
             <select class="form-control">
@@ -196,31 +196,45 @@
     <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script> 
     <!-- SCRIPT SLIDER:  -->
     <script type="text/javascript">
-        var iSlider = $("#p_imovel").slider({ 
-            id: "p_imovel", 
-            min: 0, 
-            max: 1000000, 
-            range: true, 
-            value: [0, 1000000], 
-            step: 5000});
-        $("#n_quartos").slider({
-        min: 0,
-        max: 10,
-        value: 0,
-        tooltip_position:'bottom'
-        });
 
-        iSlider.on("slide",function(slideEv){
-            var valorMax = slideEv.value[1];
-            $("#min").text(slideEv.value[0] + "€");
-            if(valorMax == 1000000){
-               $("#max").text("+" + valorMax + "€");
-            }else{
-               $("#max").text(valorMax + "€");
-            }
-        });
+        function renderSlider(total,step_value){
+
+
+            var iSlider = $("#p_imovel").slider({ 
+                id: "p_imovel", 
+                min: 0, 
+                max: total, 
+                range: true, 
+                value: [0, total], 
+                step: step_value});
+            
+
+            iSlider.on("slide",function(slideEv){
+                var valorMax = slideEv.value[1];
+                $("#min").text(slideEv.value[0] + "€");
+                if(valorMax == total){
+                   $("#max").text("+" + valorMax + "€");
+                }else{
+                   $("#max").text(valorMax + "€");
+                }
+            });
+      }
+      renderSlider(1000000,5000);
    
         
+    </script>
+    <!-- SCRIPT SLIDER CHANGE-->
+    <script type="text/javascript">
+        function optComprarTrespasse(){
+            var select = document.getElementById("finalidade");
+            if(select.value == "Arrendar"){
+                $("#max").text("+5000€");
+                renderSlider(5000,250);
+            }else{
+                $("#max").text("+1000000€");
+                renderSlider(1000000,5000);
+            }
+        }
     </script>
 
     
