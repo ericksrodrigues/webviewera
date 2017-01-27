@@ -181,6 +181,7 @@
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
     <script src="assets/js/jquery.scrollTo.min.js"></script>
@@ -237,7 +238,31 @@
         }
     </script>
 
-    
+    <!-- SOAP TEST !-->
+    <script type="text/javascript">
+        var token = "2f30fa79-28c0-44c9-8adb-f244a85cef27";
+        var dominio = "ws.era.pt";
+      
+        function getDistritos() {
+            var webMethod = "http://" + dominio + "/chatbot/service.asmx/getDistritos";
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                contentType: "application/json; charset=utf-8",
+                data: "{'token': '" + token + "'}",
+                dataType: "json",
+                success: function (msg) {
+                    var data = msg.hasOwnProperty("d") ? msg.d : msg;
+                    console.log(JSON.stringify(data).replace(/},{/g, '},<br/>{'));
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+       getDistritos();
+
+    </script>
 
 
     <!-- SCRIPT GOOGLE MAPS API 
