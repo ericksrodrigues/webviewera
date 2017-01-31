@@ -263,7 +263,11 @@
                     var data = msg.hasOwnProperty("d") ? msg.d : msg;
                     var x2js = new X2JS();
 
+<<<<<<< HEAD
                     console.log(x2js.xml2json(data/*JSON.stringify(data).replace(/},{/g, '},<br/>{')*/));
+=======
+                    console.log(x2js.parseXmlString(data/*JSON.stringify(data).replace(/},{/g, '},<br/>{')*/));
+>>>>>>> 582bd2aedd4832a28847a1a8b306af13d6301b0c
                 },
                 error: function (e) {
 
