@@ -194,7 +194,8 @@
     
     <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script> 
+    <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script>
+     <script type="text/javascript" src="assets/js/xml2json.js"></script> 
     <!-- SCRIPT SLIDER:  -->
     <script type="text/javascript">
 
@@ -240,28 +241,54 @@
 
     <!-- SOAP TEST !-->
     <script type="text/javascript">
-        var token = "2f30fa79-28c0-44c9-8adb-f244a85cef27";
+        //var token = "2f30fa79-28c0-44c9-8adb-f244a85cef27";
         var dominio = "ws.era.pt";
-      
+        
+        function teste(){
+            console.log({'token': + "'" +token + "'" });
+        }
         function getDistritos() {
-            var webMethod = "http://" + dominio + "/chatbot/service.asmx/getDistritos";
+            /*
+            $.post( "http://" + dominio + "/chatbot/service.asmx/getDistritos", { token: "2f30fa79-28c0-44c9-8adb-f244a85cef27" }, function(data){
+
+                console.log(data);
+            });*/
+
+           var webMethod = "http://" + dominio + "/chatbot/service.asmx/getDistritos";
             $.ajax({
                 type: "POST",
-                url: webMethod,
-                contentType: "application/json; charset=utf-8",
-                data: "{'token': '" + token + "'}",
-                dataType: "json",
+                url: webMethod, 
+                data: {token: "2f30fa79-28c0-44c9-8adb-f244a85cef27" },
                 success: function (msg) {
                     var data = msg.hasOwnProperty("d") ? msg.d : msg;
-                    console.log(JSON.stringify(data).replace(/},{/g, '},<br/>{'));
+                    var x2js = new X2JS();
+
+                    console.log(x2js.parseXmlString(data/*JSON.stringify(data).replace(/},{/g, '},<br/>{')*/));
                 },
                 error: function (e) {
-                    console.log(e);
-                }
-            });
-        }
-       getDistritos();
 
+                    console.log(e.responseText);
+                },
+            });
+        
+        }
+
+        getDistritos();
+        /*function getDistritos(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "http://" + dominio + "/chatbot/service.asmx/getDistritos",true);
+            xhttp.setRequestHeader("Host",dominio);
+
+            xhttp.setRequestHeader("Content-Type","text/xml; charset=utf-8");
+            xhttp.setRequestHeader("SOAPAction","'http://ws.era.pt/chatbot//getDistritos'");
+            xhttp.onload = function(){
+                console.log(this.responseText);
+            }
+            xhttp.send("token=2f30fa79-28c0-44c9-8adb-f244a85cef27");
+
+        }
+        getDistritos();
+        */
     </script>
 
 
