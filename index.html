@@ -80,19 +80,19 @@
                 <div id="slider_change"><input style='width:95%;'  id='p_imovel' type='text'/></div>
             </center>
             <h3>Localização</h3>
-            <select class="form-control">
+            <select class="form-control" id="slc_distrito">
                 <option>Distrito</option>
             </select>
             <br/>
-            <select class="form-control">
+            <select class="form-control" id="slc_concelho">
                 <option>Concelho</option>
             </select>
             <br/>
-            <select class="form-control">
+            <select class="form-control" id="slc_freguesia">
                 <option>Freguesia</option>
             </select>
             <br/>
-            <select class="form-control">
+            <select class="form-control"  id="slc_zona">
                 <option>Zona</option>
             </select>
 
@@ -240,123 +240,67 @@
     </script>
 
     <!-- SOAP TEST !-->
-    <script type="text/javascript">
+    <script type="text/javascript" src="assets/webservice.js">
         //var token = "2f30fa79-28c0-44c9-8adb-f244a85cef27";
-        var dominio = "ws.era.pt";
+
         
-        function teste(){
-            console.log({'token': + "'" +token + "'" });
-        }
-        function getDistritos() {
-            /*
-            $.post( "http://" + dominio + "/chatbot/service.asmx/getDistritos", { token: "2f30fa79-28c0-44c9-8adb-f244a85cef27" }, function(data){
-
-                console.log(data);
-            });*/
-
-           var webMethod = "https://" + dominio + "/chatbot/service.asmx/getDistritos";
-            $.ajax({
-                type: "POST",
-                url: webMethod, 
-                data: {token: "2f30fa79-28c0-44c9-8adb-f244a85cef27" },
-                success: function (msg) {
-                    var data = msg.hasOwnProperty("d") ? msg.d : msg;
-                    var x2js = new X2JS();
-
-                    console.log(x2js.xml2json(data/*JSON.stringify(data).replace(/},{/g, '},<br/>{')*/));
-                },
-                error: function (e) {
-
-                    console.log(e.responseText);
-                },
-            });
-        
-        }
-
-        getDistritos();
-        /*function getDistritos(){
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "http://" + dominio + "/chatbot/service.asmx/getDistritos",true);
-            xhttp.setRequestHeader("Host",dominio);
-
-            xhttp.setRequestHeader("Content-Type","text/xml; charset=utf-8");
-            xhttp.setRequestHeader("SOAPAction","'http://ws.era.pt/chatbot//getDistritos'");
-            xhttp.onload = function(){
-                console.log(this.responseText);
-            }
-            xhttp.send("token=2f30fa79-28c0-44c9-8adb-f244a85cef27");
-
-        }
-        getDistritos();
-        */
     </script>
-
-
-    <!-- SCRIPT GOOGLE MAPS API 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAexw_BNkfc1Ddv33WikUoh82jj2bK8IFY&libraries=places"></script>
-    
     <script type="text/javascript">
-        function initialize() {
-            console.log("teste");
-          var mapOptions = {
-            center: {lat: -33.8688, lng: 151.2195},
-            zoom: 13,
-            scrollwheel: false
-          };
-          var map = new google.maps.Map(document.getElementById('map'),
-            mapOptions);
-
-          var input = /** @type {HTMLInputElement} */(
-              document.getElementById('idmap'));
-
-          // Create the autocomplete helper, and associate it with
-          // an HTML text input box.
-          var autocomplete = new google.maps.places.Autocomplete(input);
-          autocomplete.bindTo('idmap', map);
-
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-          var infowindow = new google.maps.InfoWindow();
-          var marker = new google.maps.Marker({
-            map: map
-          });
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-          });
-
-          // Get the full place details when the user selects a place from the
-          // list of suggestions.
-          google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            infowindow.close();
-            var place = autocomplete.getPlace();
-            if (!place.geometry) {
-              return;
-            }
-
-            if (place.geometry.viewport) {
-              map.fitBounds(place.geometry.viewport);
-            } else {
-              map.setCenter(place.geometry.location);
-              map.setZoom(17);
-            }
-
-            // Set the position of the marker using the place ID and location.
-            marker.setPlace(/** @type {!google.maps.Place} */ ({
-              placeId: place.place_id,
-              location: place.geometry.location
-            }));
-            marker.setVisible(true);
-
-            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                'Place ID: ' + place.place_id + '<br>' +
-                place.formatted_address + '</div>');
-            infowindow.open(map, marker);
-          });
+        var distritos = webservice.doPost({}, "getDistritos").ArrayOfDistrito.Distrito;
+        var concelhos;
+        var freguesia;
+        var zona;
+        var slc_distrito = $("#slc_distrito");
+        var slc_concelho = $("#slc_concelho");
+        var slc_freguesia = $("#slc_freguesia");
+        var slc_zona = $("#slc_zona");
+        function update(vet, slc){
+            if(vet.constructor === Array){
+                vet.forEach(function(value,index, ar){
+                    slc.append($('<option>',{
+                        text : value.nome,
+                        "value": value.id 
+                    }));
+                });
+            }else{
+                    slc.append($('<option>',{
+                        text : vet.nome,
+                        "value": vet.id 
+                    }));
+                }
         }
+        
+        update(distritos, slc_distrito);
+  
+        var x = 1;
+        slc_distrito.change(function(){
+            slc_concelho.empty();
+            slc_freguesia.empty();
+            slc_freguesia.html("<option>Freguesia</option>");
+            slc_concelho.html("<option>Concelho</option>");
+            concelhos = webservice.doPost({"distrito" : slc_distrito.val()}, "getConcelhos").ArrayOfConcelho.Concelho;
+            update(concelhos,slc_concelho);
+        });
 
-        // Run the initialize function when the window has finished loading.
-        google.maps.event.addDomListener(window, 'load', initialize);
+        slc_concelho.change(function(){
+            slc_freguesia.empty();
+            slc_freguesia.html("<option>Freguesia</option>");
+            slc_zona.empty();
+            slc_zona.html("<option>Zona</option>");
+            zona = webservice.doPost({"distrito" : slc_distrito.val(), "concelho" : slc_concelho.val()}, "getZonas").ArrayOfZona.Zona;
+            freguesia = webservice.doPost({"distrito" : slc_distrito.val(), "concelho" : slc_concelho.val()}, "getFreguesias").ArrayOfFreguesia.Freguesia;
+            if(freguesia){
+                update(freguesia,slc_freguesia);
+            }
+            if(zona){
+                update(zona,slc_zona); 
+            }
+        });
+
+
+
     </script>
-    -->
+
+
   </body>
 </html>
