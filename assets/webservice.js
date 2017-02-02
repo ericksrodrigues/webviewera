@@ -1,18 +1,20 @@
 var webservice = {
-	webMethod : "http://ws.era.pt/chatbot/service.asmx/",
+	webMethod : "http://ws.era.pt/chatbotrest/api/",
 	doPost : function(da, op){
 		var retorno;
 		console.log(da);
         $.ajax({
 
-	        type: "POST",
-	        url: this.webMethod + op, 
+	        type: "GET",
+	        url: this.webMethod + op + "?" + "token=2f30fa79-28c0-44c9-8adb-f244a85cef27&" + da, 
 	        async: false,
 
-	        data: Object.assign({},{token: "2f30fa79-28c0-44c9-8adb-f244a85cef27"},da),
+	        //data: Object.assign({},{token: "2f30fa79-28c0-44c9-8adb-f244a85cef27"},da),
 	            success: function (msg) {
 	                var data = msg.hasOwnProperty("d") ? msg.d : msg;
+	                console.log
 	                var x2js = new X2JS();
+	                console.log(data);
 		            retorno = x2js.xml2json(data);
 	            },
 	            error: function (e) {
