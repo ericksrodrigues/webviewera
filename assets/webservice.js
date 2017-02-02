@@ -6,7 +6,7 @@ var webservice = {
         $.ajax({
 
 	        type: "GET",
-	        url: this.webMethod + op + "?" + "token=2f30fa79-28c0-44c9-8adb-f244a85cef27&" + da, 
+	        url: "https://api-era.herokuapp.com/erabot/distritos", 
 	        async: false,
 
 	        //data: Object.assign({},{token: "2f30fa79-28c0-44c9-8adb-f244a85cef27"},da),
