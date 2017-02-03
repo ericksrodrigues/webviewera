@@ -246,7 +246,7 @@
         
     </script>
     <script type="text/javascript">
-        var distritos = webservice.doPost("", "getDistritos").ArrayOfDistrito.Distrito;
+        var distritos = webservice.doPost("", "distritos");
         var concelhos;
         var freguesia;
         var zona;
@@ -269,6 +269,7 @@
                     }));
                 }
         }
+        console.log(distritos);
         
         update(distritos, slc_distrito);
   
@@ -278,7 +279,7 @@
             slc_freguesia.empty();
             slc_freguesia.html("<option>Freguesia</option>");
             slc_concelho.html("<option>Concelho</option>");
-            concelhos = webservice.doPost({"distrito" : slc_distrito.val()}, "getConcelhos").ArrayOfConcelho.Concelho;
+            concelhos = webservice.doPost(/*{"distrito" : slc_distrito.val()}*/ slc_distrito.val(), "concelhos").concelhos;
             update(concelhos,slc_concelho);
         });
 
@@ -287,8 +288,8 @@
             slc_freguesia.html("<option>Freguesia</option>");
             slc_zona.empty();
             slc_zona.html("<option>Zona</option>");
-            zona = webservice.doPost({"distrito" : slc_distrito.val(), "concelho" : slc_concelho.val()}, "getZonas").ArrayOfZona.Zona;
-            freguesia = webservice.doPost({"distrito" : slc_distrito.val(), "concelho" : slc_concelho.val()}, "getFreguesias").ArrayOfFreguesia.Freguesia;
+            zona = webservice.doPost({"distrito" : slc_distrito.val(), "concelho" : slc_concelho.val()}, "getZonas");
+            freguesia = webservice.doPost(slc_distrito.val()+ "/" + slc_concelho.val(), "freguesias").freguesias;
             if(freguesia){
                 update(freguesia,slc_freguesia);
             }
