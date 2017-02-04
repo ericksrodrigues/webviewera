@@ -35,11 +35,11 @@
     <!--Content -->
     <form method="POST" action="#">
     <center><h3>Pedir mais informações</h3></center>
-    <input type="text" class="form-control" placeholder="Seu nome" /><br/>
-    <input type="text" class="form-control" placeholder="Seu e-mail"/><br/>
-    <input type="tel" class="form-control" placeholder="Seu telefone"/><br/>
-    <textarea class="form-control" placeholder="Mensagem"></textarea><br/>
-    <button type="button" class="btn btn-primary btn-block">Enviar</button>
+    <input type="text" id="nome" class="form-control" placeholder="Seu nome" /><br/>
+    <input type="text" id="email" class="form-control" placeholder="Seu e-mail"/><br/>
+    <input type="tel" id="telefone" class="form-control" placeholder="Seu telefone"/><br/>
+    <textarea id="mensagem" class="form-control" placeholder="Mensagem"></textarea><br/>
+    <input type="button" id="clicker" class="btn btn-primary btn-block" value="Enviar">
 
     </form>
 
@@ -61,6 +61,20 @@
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script> 
     <!-- SCRIPT SLIDER:  -->
+    <script type="text/javascript" src="assets/webservice.js"></script>
+    <script type="text/javascript">
+    
+        var nome = $("#nome");
+        var email = $("#email");
+        var telefone = $("#telefone");
+        var mensagem = $("#mensagem");
+        var clicker = $("#clicker");
+
+        clicker.click(function(){
+            console.log("teste");
+            webservice.doPost("01/" + nome.val() + "/" + email.val() + "/" + telefone.val() + "/" + mensagem.val(), "info");
+        });
+    </script>
     
   </body>
 </html>

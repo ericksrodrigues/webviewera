@@ -288,8 +288,9 @@
             slc_freguesia.html("<option>Freguesia</option>");
             slc_zona.empty();
             slc_zona.html("<option>Zona</option>");
-            zona = webservice.doPost({"distrito" : slc_distrito.val(), "concelho" : slc_concelho.val()}, "getZonas");
             freguesia = webservice.doPost(slc_distrito.val()+ "/" + slc_concelho.val(), "freguesias").freguesias;
+
+            zona = webservice.doPost(slc_distrito.val()+ "/" + slc_concelho.val(), "zonas").zonas;
             if(freguesia){
                 update(freguesia,slc_freguesia);
             }
