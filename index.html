@@ -195,7 +195,7 @@
 
 
             webservice.doBodyBOT({
-                messenger_identifier: 12345,
+                messenger_identifier: getUrlParameter("messenger_identifier"),
                 distrito: selected_distrito,
                 concelho: selected_concelho,
                 freguesia: selected_freguesia,
@@ -206,7 +206,7 @@
                 preco_min: iSlider.slider('getValue')[0],
                 preco_max: iSlider.slider('getValue')[1],
                 referencia: $("#referencia").val(),
-                idioma: "PT"
+                idioma: getUrlParameter('idioma')
             },"search");
         });
 
