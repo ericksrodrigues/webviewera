@@ -16,7 +16,6 @@ var getUrlParameter = function getUrlParameter(sParam) {
 var webservice = {
 	doPost : function(da, op){
 		var retorno;
-		console.log(da);
         $.ajax({
         	async: false,
 	        type: "GET",
@@ -25,7 +24,6 @@ var webservice = {
 	       // data: da,
 	            success: function (msg) {
 	                var data = msg.hasOwnProperty("d") ? msg.d : msg;
-	                console.log
 	                console.log(data);
 		            retorno = data;
 	            },
@@ -35,6 +33,29 @@ var webservice = {
 	            },
 	    });
 	    return retorno;
+	},
+	doBodyBOT: function(da, op){
+		let retorno;
+		console.log(JSON.stringify(da));
+		$.ajax({
+			type: "POST",
+			url: "https://erafake.herokuapp.com/user/" + op,
+			data: JSON.stringify(da),
+
+			
+			datatype: "json",
+	        contentType: "application/json; charset=utf-8",
+			sucess: function (msg){
+				var data = msg;
+				console.log(data);
+				retorno = data;
+			},
+			error: function(e){
+				console.log("error" + e.responseText);
+			}
+
+
+		});
 	}
 }
 		var language = getUrlParameter("idioma");

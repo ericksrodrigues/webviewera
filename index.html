@@ -44,13 +44,13 @@
                 
             </select>
             <br/>
-            <select class="form-control">
+            <select id="nQuartos" class="form-control">
                 <option>Nº de quartos</option>
-                <option>1 Quarto</option>
-                <option>2 Quartos</option>
-                <option>3 Quartos</option>
-                <option>4 Quartos</option>
-                <option>5+ Quartos</option>
+                <option value=1>1 Quarto</option>
+                <option value=2>2 Quartos</option>
+                <option value=3>3 Quartos</option>
+                <option value=4>4 Quartos</option>
+                <option value=5>5 Quartos</option>
             </select>
             <br/>
             <!-- <input id="n_quartos" type="text" style="width: 90%" /> <br/> -->
@@ -86,7 +86,7 @@
             <div style="width:100%; height:200px" id="map"></div>
             -->
         <h3>Referência</h3>
-        <input type="number" class="form-control">
+        <input type="number" id="referencia" class="form-control">
         <input type="button" id="clicker" class="btn btn-primary btn-block" value="Enviar">
 
         </form>
@@ -112,11 +112,11 @@
      <script type="text/javascript" src="assets/js/xml2json.js"></script> 
     <!-- SCRIPT SLIDER:  -->
     <script type="text/javascript">
-
+    var iSlider;
         function renderSlider(total,step_value){
 
 
-            var iSlider = $("#p_imovel").slider({ 
+            iSlider = $("#p_imovel").slider({ 
                 id: "p_imovel", 
                 min: 0, 
                 max: total, 
@@ -181,7 +181,34 @@
             if(zona){
                 update(zona,slc_zona); 
             }
-        });    
+        });
+
+        var clicker = $("#clicker");
+        clicker.click(function(){
+            let selected_distrito = $("#slc_distrito option:selected").text();
+            let selected_concelho = $("#slc_concelho option:selected").text();
+            let selected_freguesia = $("#slc_freguesia option:selected").text();
+            let selected_zona = $("#slc_zona option:selected").text();
+            let selected_grupo = $("#slc_grupo option:selected").text();
+            let selected_objectivo = $("#finalidade option:selected").text();
+
+
+
+            webservice.doBodyBOT({
+                messenger_identifier: 12345,
+                distrito: selected_distrito,
+                concelho: selected_concelho,
+                freguesia: selected_freguesia,
+                zona: selected_zona,
+                tipo: selected_grupo,
+                objectivo: selected_objectivo,
+                nquartos: $("#nQuartos").val(),
+                preco_min: iSlider.slider('getValue')[0],
+                preco_max: iSlider.slider('getValue')[1],
+                referencia: $("#referencia").val(),
+                idioma: "PT"
+            },"search");
+        });
 
 
 

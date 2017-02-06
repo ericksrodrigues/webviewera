@@ -36,7 +36,7 @@
     <div >
         <form method="POST" action="#">
             <h3>Finalidade</h3>
-            <select class="form-control" id="finalidade" onchange="optComprarTrespasse();">             
+            <select class="form-control" id="finalidade" onchange="optComprarTrespasse();">              
             </select>
             <h3>Tipo de imóvel</h3>
             <select id="slc_grupo" class="form-control">
@@ -61,7 +61,7 @@
             </select>
 
             <br/>
-            <input type="button" id="clicker" class="btn btn-primary btn-block" value="Enviar">
+            <input type="button" id="clicker" class="btn btn-primary btn-block" value="Ativar Notificações">
 
             </div>
             </h3>
@@ -84,14 +84,14 @@
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script>
      <script type="text/javascript" src="assets/js/xml2json.js"></script> 
-     <!-- Documentação https://github.com/wenzhixin/multiple-select -->
     <!-- SCRIPT SLIDER:  -->
     <script type="text/javascript">
+        var iSlider;
 
         function renderSlider(total,step_value){
 
 
-            var iSlider = $("#p_imovel").slider({ 
+            iSlider = $("#p_imovel").slider({ 
                 id: "p_imovel", 
                 min: 0, 
                 max: total, 
@@ -126,6 +126,21 @@
                 renderSlider(1000000,5000);
             }
         }
+            var clicker = $("#clicker");
+       
+        clicker.click(function(){
+            var selected_distrito = $("#slc_distrito option:selected");
+            var selected_grupo = $("#slc_grupo option:selected");
+            webservice.doBodyBOT({
+                messenger_identifier: 12345,
+                distrito: selected_distrito.text(),
+                preco_min: iSlider.slider('getValue')[0],
+                preco_max: iSlider.slider('getValue')[1],
+                tipo: slc_grupo.text,
+                objectivo: selected_grupo.text(),
+                idioma: "PT"
+            }, "notifications");
+        });
     </script>
 
     <script type="text/javascript" src="assets/webservice.js">
