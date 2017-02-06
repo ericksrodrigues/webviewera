@@ -38,6 +38,7 @@
             <h3>Finalidade</h3>
             <select class="form-control" id="finalidade" onchange="optComprarTrespasse();">              
             </select>
+            <br/>
             <h3>Tipo de imóvel</h3>
             <select id="slc_grupo" class="form-control">
                 
@@ -137,7 +138,7 @@
                 distrito: selected_distrito.text(),
                 preco_min: iSlider.slider('getValue')[0],
                 preco_max: iSlider.slider('getValue')[1],
-                tipo: slc_grupo.text(),
+                tipo: selected_grupo.text(),
                 objectivo: selected_objetivo.text(),
                 idioma: getUrlParameter("idioma")
             }, "notifications");
