@@ -44,15 +44,6 @@
                 
             </select>
             <br/>
-            <select class="form-control">
-                <option>Nº de quartos</option>
-                <option>1 Quarto</option>
-                <option>2 Quartos</option>
-                <option>3 Quartos</option>
-                <option>4 Quartos</option>
-                <option>5+ Quartos</option>
-            </select>
-            <br/>
             <!-- <input id="n_quartos" type="text" style="width: 90%" /> <br/> -->
             <!--
             <div class="form-inline">
@@ -69,29 +60,13 @@
             <select class="form-control" id="slc_distrito">
                 <option>Distrito</option>
             </select>
-            <br/>
-            <select class="form-control" id="slc_concelho">
-                <option>Concelho</option>
-            </select>
-            <br/>
-            <select class="form-control" id="slc_freguesia">
-                <option>Freguesia</option>
-            </select>
-            <br/>
-            <select class="form-control"  id="slc_zona">
-                <option>Zona</option>
-            </select>
 
-            <!-- <input  type="text" class="form-control" id="idmap"/>
-            <div style="width:100%; height:200px" id="map"></div>
-            -->
-        <h3>Referência</h3>
-        <input type="number" class="form-control">
-        <input type="button" id="clicker" class="btn btn-primary btn-block" value="Enviar">
+            <br/>
+            <input type="button" id="clicker" class="btn btn-primary btn-block" value="Enviar">
 
-        </form>
-   
-    <!-- End Of Content -->
+            </div>
+            </h3>
+            <!-- End Of Content -->
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/jquery-1.8.3.min.js"></script>
@@ -110,6 +85,7 @@
     <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script>
      <script type="text/javascript" src="assets/js/xml2json.js"></script> 
+     <!-- Documentação https://github.com/wenzhixin/multiple-select -->
     <!-- SCRIPT SLIDER:  -->
     <script type="text/javascript">
 
@@ -156,37 +132,7 @@
     <script type="text/javascript" src="assets/webservice.js">
         
     </script>
-
-    <script type="text/javascript">
-        slc_distrito.change(function(){
-            slc_concelho.empty();
-            slc_freguesia.empty();
-            slc_freguesia.html("<option>Freguesia</option>");
-            slc_concelho.html("<option>Concelho</option>");
-            concelhos = webservice.doPost(/*{"distrito" : slc_distrito.val()}*/ slc_distrito.val(), "concelhos").concelhos;
-            update(concelhos,slc_concelho);
-        });
-
-        slc_concelho.change(function(){
-            slc_freguesia.empty();
-            slc_freguesia.html("<option>Freguesia</option>");
-            slc_zona.empty();
-            slc_zona.html("<option>Zona</option>");
-            freguesia = webservice.doPost(slc_distrito.val()+ "/" + slc_concelho.val(), "freguesias").freguesias;
-
-            zona = webservice.doPost(slc_distrito.val()+ "/" + slc_concelho.val(), "zonas").zonas;
-            if(freguesia){
-                update(freguesia,slc_freguesia);
-            }
-            if(zona){
-                update(zona,slc_zona); 
-            }
-        });    
-
-
-
-    </script>
-
-
-  </body>
+            </form>
+            </div>
+      </body>
 </html>
