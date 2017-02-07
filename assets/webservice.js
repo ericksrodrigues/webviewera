@@ -19,7 +19,8 @@ var webservice = {
         $.ajax({
         	async: false,
 	        type: "GET",
-	        url: "https://api-era.herokuapp.com/erabot/" + op + "/" + da, 
+	        url: "https://api-era.herokuapp.com/erabot/" + op + "/" + da,
+	        cache: false, 
 
 	       // data: da,
 	            success: function (msg) {
