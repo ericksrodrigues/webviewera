@@ -86,6 +86,11 @@
     <script type="text/javascript" src="assets/js/bootstrap-slider.js"></script>
      <script type="text/javascript" src="assets/js/xml2json.js"></script> 
     <!-- SCRIPT SLIDER:  -->
+    <script>
+    $(document).bind("mobileinit", function(){
+        $.support.cors = true;
+        $.mobile.allowCrossDomainPages = true;       
+    }); 
     <script type="text/javascript">
         var iSlider;
 
