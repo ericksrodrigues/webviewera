@@ -17,7 +17,7 @@ var webservice = {
 	doPost : function(da, op){
 		var retorno;
         $.ajax({
-        	async: false,
+        	async: true,
 	        type: "GET",
 	        url: "https://api-era.herokuapp.com/erabot/" + op + "/" + da,
 	        cache: false, 
