@@ -88,8 +88,10 @@
     <!-- SCRIPT SLIDER:  -->
     <script>
     $(document).bind("mobileinit", function(){
+        $.mobile.ajaxEnabled=true,
         $.support.cors = true;
         $.mobile.allowCrossDomainPages = true;       
+
     }); 
     </script>
     <script type="text/javascript">
