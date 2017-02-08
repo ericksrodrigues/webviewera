@@ -1,3 +1,5 @@
+document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito</option>';                      
+
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -72,7 +74,6 @@ var webservice = {
         var freguesia;
         var zona;
         var slc_distrito = $("#slc_distrito");
-        document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito</option>';                      
         var slc_concelho = $("#slc_concelho");
         var slc_freguesia = $("#slc_freguesia");
         var slc_zona = $("#slc_zona");
