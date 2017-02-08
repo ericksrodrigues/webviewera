@@ -55,7 +55,7 @@
     <!--Content -->
     <div >
         <form method="POST" action="#">
-            <h4>Finalidadewws</h4>
+            <h4>Finalidade</h4>
             <select class="form-control" id="finalidade" onchange="optComprarTrespasse();">              
             </select>
             <br/>
@@ -189,8 +189,6 @@ var webservice = {
             type: "POST",
             url: "https://erafake.herokuapp.com/user/" + op,
             data: JSON.stringify(da),
-
-            
             datatype: "json",
             contentType: "application/json; charset=utf-8",
             sucess: function (msg){
