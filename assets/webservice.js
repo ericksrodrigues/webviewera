@@ -14,10 +14,10 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 var webservice = {
-	doPost : function(da, op, callback){
+	doPost : function(da, op){
 		var retorno;
         $.ajax({
-        	async: true,
+        	async: false,
 	        type: "GET",
 	        url: "https://api-era.herokuapp.com/erabot/" + op + "/" + da,
 	        cache: false, 
@@ -25,7 +25,7 @@ var webservice = {
 	       // data: da,
 	            success: function (msg) {
 	                var data = msg.hasOwnProperty("d") ? msg.d : msg;
-		            callback(data);
+		            retorno = data;
 	            },
 	            error: function (e) {
 
@@ -64,19 +64,14 @@ var webservice = {
 		if(!language){
 			language = "PT";
 		}
-			webservice.doPost("", "distritos", function(data){
-				var distritos = data;
-				console.log("AGORA" + distritos)
-		        var slc_distrito = $("#slc_distrito");
-
-		        update(distritos, slc_distrito);
-			});
-
+		
+		var distritos = webservice.doPost("", "distritos");
 		var grupos = webservice.doPost(language,"grupos").grupos;
 		var objectivo = webservice.doPost(language,"objectivos").objectivos;
         var concelhos;
         var freguesia;
         var zona;
+        var slc_distrito = $("#slc_distrito");
         var slc_concelho = $("#slc_concelho");
         var slc_freguesia = $("#slc_freguesia");
         var slc_zona = $("#slc_zona");
@@ -97,6 +92,8 @@ var webservice = {
                     }));
                 }
         }
+     	update(distritos, slc_distrito);
+
         update(objectivo, slc_objectivo);
         update(grupos, slc_grupo);
   
