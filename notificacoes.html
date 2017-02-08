@@ -55,7 +55,7 @@
     <!--Content -->
     <div >
         <form method="POST" action="#">
-            <h4>Finalidadesws</h4>
+            <h4>Finalidadeswsx</h4>
             <select class="form-control" id="finalidade" onchange="optComprarTrespasse();">              
             </select>
             <br/>
@@ -179,10 +179,11 @@ var webservice = {
                     retorno = data;
                 },
                 error: function (e) {
-
+                    alert(e);
                     console.log(e.responseText);
                 },
         });
+        alert(retorno);
         return retorno;
     },
     doBodyBOT: function(da, op){
