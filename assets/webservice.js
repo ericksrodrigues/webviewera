@@ -72,6 +72,10 @@ var webservice = {
         var freguesia;
         var zona;
         var slc_distrito = $("#slc_distrito");
+        slc_distrito.append($('<option>',{
+        	text: "distrito teste",
+        	"value": 1
+        }));
         var slc_concelho = $("#slc_concelho");
         var slc_freguesia = $("#slc_freguesia");
         var slc_zona = $("#slc_zona");
