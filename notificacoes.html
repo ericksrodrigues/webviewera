@@ -77,7 +77,6 @@
             <h4>Localização</h4>
             <select class="form-control" id="slc_distrito">
             </select>
-            <script> document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito</option>';</script>
 
             <br/>
             <input type="button" id="clicker" class="btn btn-primary btn-block" value="Ativar Notificações">
@@ -138,7 +137,8 @@
             });
       }
       renderSlider(1000000,5000);
-   
+    document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito</option>';
+
         
     </script>
     <!-- SCRIPT SLIDER CHANGE-->
