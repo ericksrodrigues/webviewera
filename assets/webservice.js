@@ -14,6 +14,9 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito32123</option>';
+
+
 var webservice = {
 	doPost : function(da, op){
 		var retorno;
@@ -68,7 +71,6 @@ var webservice = {
 		
 		var distritos = webservice.doPost("", "distritos");
 		var grupos = webservice.doPost(language,"grupos").grupos;
-	    document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito32123</option>';
 
 		var objectivo = webservice.doPost(language,"objectivos").objectivos;
         var concelhos;
