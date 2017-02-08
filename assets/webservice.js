@@ -1,4 +1,3 @@
-document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito</option>';                      
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
