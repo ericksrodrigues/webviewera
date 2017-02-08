@@ -72,10 +72,7 @@ var webservice = {
         var freguesia;
         var zona;
         var slc_distrito = $("#slc_distrito");
-        slc_distrito.append($('<option>',{
-        	text: "distrito teste",
-        	"value": 1
-        }));
+        slc_distrito.append('<option value= "'+ value.id + '">' + value.nome + '</option>');                      
         var slc_concelho = $("#slc_concelho");
         var slc_freguesia = $("#slc_freguesia");
         var slc_zona = $("#slc_zona");
@@ -84,18 +81,13 @@ var webservice = {
         function update(vet, slc){
             if(vet.constructor === Array){
                 vet.forEach(function(value,index, ar){
-                    slc.append($('<option>',{
-                        text : value.nome,
-                        "value": value.id 
-                    }));
+                    slc.append('<option value= "'+ value.id + '">' + value.nome + '</option>');
                 });
             }else{
-                    slc.append($('<option>',{
-                        text : vet.nome,
-                        "value": vet.id 
-                    }));
-                }
-        }
+                slc.append('<option value= "'+ value.id + '">' + value.nome + '</option>');                      
+            };
+         }
+        
      	update(distritos, slc_distrito);
 
         update(objectivo, slc_objectivo);
