@@ -14,7 +14,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-document.getElementById("slc_distrito").innerHTML = '<option> Teste distrito32123</option>';
+document.getElementById("slc_distrito").innerHTML = '<option> Teste</option>';
 
 
 var webservice = {
