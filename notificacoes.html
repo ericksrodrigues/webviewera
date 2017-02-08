@@ -55,7 +55,7 @@
     <!--Content -->
     <div >
         <form method="POST" action="#">
-            <h4>Finalidade</h4>
+            <h4>Finalidadesws</h4>
             <select class="form-control" id="finalidade" onchange="optComprarTrespasse();">              
             </select>
             <br/>
@@ -159,11 +159,14 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-
+$.ajaxPrefilter( "json script", function( options ) {
+    options.crossDomain = true;
+});
 
 var webservice = {
     doPost : function(da, op){
         var retorno;
+
         $.ajax({
             async: false,
             type: "GET",
